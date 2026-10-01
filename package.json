@@ -8,7 +8,7 @@
     "start": "nodemon app.js",
     "start-server": "node app.js"
   },
-  "author": "Maximilian Schwarzmüller",
+  "author": "Rudhra Balankari",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.18.3"
@@ -20,5 +20,15 @@
     "express-handlebars": "^3.0.0",
     "mysql2": "^3.24.4",
     "pug": "^2.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudhrabalankari/nodeOnlineStore.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rudhrabalankari/nodeOnlineStore/issues"
+  },
+  "homepage": "https://github.com/rudhrabalankari/nodeOnlineStore#readme"
 }
