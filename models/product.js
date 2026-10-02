@@ -25,5 +25,10 @@ module.exports = class Product {
     );
   }
 
-  static findById(id) {}
+  static findById(id) {
+    return db.execute(
+      "SELECT id, title, imageURL AS imageUrl, description, price FROM product WHERE id = ?",
+      [id],
+    );
+  }
 };
