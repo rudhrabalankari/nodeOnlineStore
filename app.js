@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const errorController = require("./controllers/error");
-const db = require("./util/database");
+const sequalize = require("./util/database");
 
 const app = express();
 
@@ -22,4 +22,13 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-app.listen(3000);
+//Syncs the models to the tables in the database. If the tables do not exist, they will be created.
+sequalize
+    .sync()
+    .then((result) => {
+      // console.log(result);
+        app.listen(3000);
+    })
+    .catch((err) => {
+        console.error(err);
+    });

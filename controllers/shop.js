@@ -14,17 +14,21 @@ exports.getProducts = (req, res, next) => {
 };
 
 exports.getProduct = (req, res, next) => {
-  const prodId = req.params.productId;
-  Product.findById(prodId)
-      .then(([product]) => {
-        console.log(product);
-        res.render("shop/product-detail", {
-          product: product[0],
-          pageTitle: product.title,
-          path: "/products",
-        });
-      })
-      .catch((err) => console.log(err));
+  const { productId } = req.params;
+  Product.findById(productId)
+    .then(([rows]) => {
+      const product = rows[0];
+      if (!product) {
+        return res.redirect("/products");
+      }
+
+      res.render("shop/product-detail", {
+        product,
+        pageTitle: product.title,
+        path: "/products",
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getIndex = (req, res, next) => {
@@ -89,17 +93,3 @@ exports.getCheckout = (req, res, next) => {
     pageTitle: "Checkout",
   });
 };
-
-//  Product.findById(prodId)
-//     .then(([rows]) => {
-//       const product = rows[0];
-//       if (!product) {
-//         return res.redirect("/products");
-//       }
-//       res.render("shop/product-detail", {
-//         product: product,
-//         pageTitle: product.title,
-//         path: "/products",
-//       });
-//     })
-//     .catch((err) => console.log(err));
